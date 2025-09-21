@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
+## Unreleased
+#### Features
+- BREAKING: allow owned Strings via `Cow` in `Color::Named` - benedikt-schaber
+
 ## 0.8.0 - 2025-07-12
 
 - Updated to rust 2024 edition
