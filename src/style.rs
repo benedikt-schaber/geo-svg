@@ -120,13 +120,13 @@ impl Display for Style {
         if let Some(opacity) = self.opacity {
             write!(fmt, r#" opacity="{opacity}""#)?;
         }
-        if let Some(fill) = self.fill {
+        if let Some(ref fill) = self.fill {
             write!(fmt, r#" fill="{fill}""#)?;
         }
         if let Some(fill_opacity) = self.fill_opacity {
             write!(fmt, r#" fill-opacity="{fill_opacity}""#)?;
         }
-        if let Some(stroke_color) = self.stroke_color {
+        if let Some(ref stroke_color) = self.stroke_color {
             write!(fmt, r#" stroke="{stroke_color}""#)?;
         }
         if let Some(stroke_width) = self.stroke_width {

@@ -265,6 +265,8 @@ impl<T: ToSvgStr> ToSvgStr for Vec<T> {
 
 #[cfg(test)]
 mod tests {
+    use std::borrow::Cow;
+
     use crate::{Color, ToSvg};
     use geo_types::{LineString, Point, Polygon};
 
@@ -274,19 +276,19 @@ mod tests {
             "{}",
             Point::new(0.0, 0.0)
                 .to_svg()
-                .with_fill_color(Color::Named("red"))
+                .with_fill_color(Color::Named(Cow::Borrowed("red")))
                 .with_radius(10.0)
-                .with_stroke_color(Color::Named("black"))
+                .with_stroke_color(Color::Named(Cow::Borrowed("black")))
                 .and(
                     Point::new(50.0, 0.0)
                         .to_svg()
                         .with_radius(5.0)
-                        .with_stroke_color(Color::Named("blue"))
+                        .with_stroke_color(Color::Named(Cow::Borrowed("blue")))
                 )
                 .with_stroke_width(1.0)
                 .with_opacity(0.5)
                 .with_fill_opacity(0.5)
-                .with_fill_color(Color::Named("green"))
+                .with_fill_color(Color::Named(Cow::Borrowed("green")))
         );
     }
 
@@ -309,8 +311,8 @@ mod tests {
                 ])]
             )
             .to_svg()
-            .with_fill_color(Color::Named("black"))
-            .with_stroke_color(Color::Named("red"))
+            .with_fill_color(Color::Named(Cow::Borrowed("black")))
+            .with_stroke_color(Color::Named(Cow::Borrowed("red")))
         );
     }
 
@@ -324,8 +326,8 @@ mod tests {
             (210.0, 0.0).into(),
         ])
         .to_svg()
-        .with_fill_color(Color::Named("black"))
-        .with_stroke_color(Color::Named("red"))
+        .with_fill_color(Color::Named(Cow::Borrowed("black")))
+        .with_stroke_color(Color::Named(Cow::Borrowed("red")))
         .to_string();
         assert_eq!(
             closed_line_string_result,
@@ -342,8 +344,8 @@ mod tests {
             (210.0, 90.0).into(),
         ])
         .to_svg()
-        .with_fill_color(Color::Named("black"))
-        .with_stroke_color(Color::Named("red"))
+        .with_fill_color(Color::Named(Cow::Borrowed("black")))
+        .with_stroke_color(Color::Named(Cow::Borrowed("red")))
         .to_string();
         assert_eq!(
             closed_line_string_result,

@@ -31,11 +31,11 @@ impl<'a> Svg<'a> {
     }
 
     pub fn with_color(mut self, color: Color) -> Self {
-        self.style.fill = Some(color);
-        self.style.stroke_color = Some(color);
+        self.style.fill = Some(color.clone());
         for sibling in &mut self.siblings {
-            *sibling = sibling.clone().with_color(color);
+            *sibling = sibling.clone().with_color(color.clone());
         }
+        self.style.stroke_color = Some(color);
         self
     }
 
@@ -48,10 +48,10 @@ impl<'a> Svg<'a> {
     }
 
     pub fn with_fill_color(mut self, fill: Color) -> Self {
-        self.style.fill = Some(fill);
         for sibling in &mut self.siblings {
-            *sibling = sibling.clone().with_fill_color(fill);
+            *sibling = sibling.clone().with_fill_color(fill.clone());
         }
+        self.style.fill = Some(fill);
         self
     }
 
@@ -80,10 +80,10 @@ impl<'a> Svg<'a> {
     }
 
     pub fn with_stroke_color(mut self, stroke_color: Color) -> Self {
-        self.style.stroke_color = Some(stroke_color);
         for sibling in &mut self.siblings {
-            *sibling = sibling.clone().with_stroke_color(stroke_color);
+            *sibling = sibling.clone().with_stroke_color(stroke_color.clone());
         }
+        self.style.stroke_color = Some(stroke_color);
         self
     }
 

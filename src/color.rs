@@ -1,8 +1,9 @@
 use std::fmt::{Display, Formatter, Result};
+use std::borrow::Cow;
 
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum Color {
-    Named(&'static str),
+    Named(Cow<'static, str>),
     Rgb(u8, u8, u8),
     Hex(u32),
     Hsl(u16, u8, u8),
@@ -27,7 +28,7 @@ mod tests {
 
     #[test]
     fn test_named() {
-        assert_eq!(format!("{}", Color::Named("red")), "red");
+        assert_eq!(format!("{}", Color::Named(Cow::Borrowed("red"))), "red");
     }
 
     #[test]
